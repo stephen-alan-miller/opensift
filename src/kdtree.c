@@ -19,7 +19,7 @@
 #include "imgfeatures.h"
 #include "utils.h"
 
-#include <cxcore.h>
+#include <opencv/cxcore.h>
 
 #include <stdio.h>
 

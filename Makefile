@@ -1,3 +1,6 @@
+#LDFLAGS = -L/usr/local/Cellar/cairo/1.12.10/lib
+#CPPFLAGS = -I/usr/local/Cellar/cairo/1.12.10/include
+
 CC	= gcc
 CFLAGS	+= -O3
 BIN_DIR	= ./bin
@@ -7,7 +10,7 @@ INC_DIR	= ./include
 LIB_DIR	= ./lib
 BIN	= siftfeat match dspfeat
 
-all: $(BIN) libopensift.a docs
+all: $(BIN) libopensift.a #docs
 
 docs:
 	doxygen Doxyfile

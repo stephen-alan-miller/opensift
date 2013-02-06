@@ -11,7 +11,7 @@
 #include "imgfeatures.h"
 #include "utils.h"
 
-#include <cxcore.h>
+#include <opencv/cxcore.h>
 
 #include <stdlib.h>
 #include <time.h>

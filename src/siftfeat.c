@@ -19,7 +19,7 @@
 #include "imgfeatures.h"
 #include "utils.h"
 
-#include <highgui.h>
+#include <opencv/highgui.h>
 
 #include <unistd.h>
 

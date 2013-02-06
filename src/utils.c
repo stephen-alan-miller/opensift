@@ -8,12 +8,12 @@
 
 #include "utils.h"
 
-#include <cv.h>
-#include <cxcore.h>
-#include <highgui.h>
+#include <opencv/cv.h>
+#include <opencv/cxcore.h>
+#include <opencv/highgui.h>
 
-#include <gdk/gdk.h>
-#include <gtk/gtk.h>
+//#include <gdk/gdk.h>
+//#include <gtk/gtk.h>
 
 #include <errno.h>
 #include <string.h>
@@ -36,9 +36,9 @@ void fatal_error(char* format, ...)
   
   fprintf( stderr, "Error: ");
 
-  va_start( ap, format );
+  //va_start( ap, format );
   vfprintf( stderr, format, ap );
-  va_end( ap );
+  //va_end( ap );
   fprintf( stderr, "\n" );
   abort();
 }
@@ -278,17 +278,17 @@ extern IplImage* stack_imgs( IplImage* img1, IplImage* img2 )
 void display_big_img( IplImage* img, char* title )
 {
   IplImage* small;
-  GdkScreen* scr;
+  //GdkScreen* scr;
   int scr_width, scr_height;
   double img_aspect, scr_aspect, scale;
 
   /* determine screen size to see if image fits on screen */
-  gdk_init( NULL, NULL );
-  scr = gdk_screen_get_default();
-  scr_width = gdk_screen_get_width( scr );
-  scr_height = gdk_screen_get_height( scr );
+  //gdk_init( NULL, NULL );
+  //scr = gdk_screen_get_default();
+  //scr_width = gdk_screen_get_width( scr );
+  //scr_height = gdk_screen_get_height( scr );
 
-  if( img->width >= 0.90 * scr_width  ||  img->height >= 0.90 * scr_height )
+  /*if( img->width >= 0.90 * scr_width  ||  img->height >= 0.90 * scr_height )
     {
       img_aspect = (double)(img->width) / img->height;
       scr_aspect = (double)(scr_width) / scr_height;
@@ -302,8 +302,8 @@ void display_big_img( IplImage* img, char* title )
 			     img->depth, img->nChannels );
       cvResize( img, small, CV_INTER_AREA );
     }
-  else
-    small = cvCloneImage( img );
+  else*/
+  small = cvCloneImage( img );
   
   cvNamedWindow( title, 1 );
   cvShowImage( title, small );
