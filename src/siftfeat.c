@@ -60,22 +60,19 @@ int main( int argc, char** argv )
   img = cvLoadImage( img_file_name, 1 );
   if( ! img )
     fatal_error( "unable to load image from %s", img_file_name );
-  n = _sift_features( img, &features, intvls, sigma, contr_thr, curv_thr,
-		      img_dbl, descr_width, descr_hist_bins );
+  n = _sift_features(img, &features, intvls, sigma, contr_thr, curv_thr,
+		      img_dbl, descr_width, descr_hist_bins);
   fprintf( stderr, "Found %d features.\n", n );
   
-  if( display )
+  if(display)
     {
-      draw_features( img, features, n );
-      display_big_img( img, img_file_name );
-      cvWaitKey( 0 );
+      draw_features(img, features, n);
+      display_big_img(img, img_file_name);
+      cvWaitKey(0);
     }
 
-  if( out_file_name != NULL )
-    export_features( out_file_name, features, n );
-
-  if( out_img_name != NULL )
-    cvSaveImage( out_img_name, img, NULL );
+  if(out_file_name != NULL) export_features(out_file_name, features, n);
+  if(out_img_name != NULL) cvSaveImage(out_img_name, img, NULL);
   return 0;
 }
 
