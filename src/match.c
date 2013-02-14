@@ -100,16 +100,15 @@ int main(int argc, char **argv)
     }
 
   fprintf(stderr, "Found %d total matches\n", m);
-  
-  if(display)
-    {
-      draw_features(stacked, feat, m);
-      display_big_img(stacked, "Matches");
-      cvWaitKey(0);
-    }
 
   if(out_file_name != NULL) export_features(out_file_name, feat, m);
   if(out_img_name != NULL) cvSaveImage(out_img_name, stacked, NULL);
+  
+  if(display) {
+    draw_features(stacked, feat, m);
+    display_big_img(stacked, "Matches");
+    cvWaitKey(0);
+  }
 
   /* 
      UNCOMMENT BELOW TO SEE HOW RANSAC FUNCTION WORKS
@@ -128,15 +127,15 @@ int main(int argc, char **argv)
 		      homog_xfer_err, 3.0, NULL, NULL );
     if( H )
       {
-	xformed = cvCreateImage( cvGetSize( img2 ), IPL_DEPTH_8U, 3 );
+	xformed = cvCreateImage(cvGetSize(img2), IPL_DEPTH_8U, 3);
 	cvWarpPerspective( img1, xformed, H, 
 			   CV_INTER_LINEAR + CV_WARP_FILL_OUTLIERS,
-			   cvScalarAll( 0 ) );
-	cvNamedWindow( "Xformed", 1 );
-	cvShowImage( "Xformed", xformed );
-	cvWaitKey( 0 );
-	cvReleaseImage( &xformed );
-	cvReleaseMat( &H );
+			   cvScalarAll(0));
+	cvNamedWindow("Xformed", 1);
+	cvShowImage("Xformed", xformed);
+	cvWaitKey(0);
+	cvReleaseImage(&xformed);
+	cvReleaseMat(&H);
       }
   }
   */
